@@ -1,13 +1,13 @@
 package pokemon;
 
-public class Stats {
+public class PokemonStats {
 	private int hp;
 	private int exp;
 	private int attack;
 	private int def;
 	private int agility;
 	
-	public Stats(int hp, int exp, int attack, int def, int agility) {
+	public PokemonStats(int hp, int exp, int attack, int def, int agility) {
 		this.hp = hp;
 		this.exp = exp;
 		this.attack = attack;

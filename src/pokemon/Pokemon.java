@@ -1,27 +1,14 @@
 package pokemon;
 
 import pokemon.types.PokemonFire;
+import pokemon.types.PokemonGrass;
 import pokemon.types.PokemonWater;
 
 public class Pokemon implements IPokemon {
-	private Stats stats;
+	private String name;
 	private String type;
-
-	public Stats getStats() {
-		return stats;
-	}
-
-	public void setStats(Stats stats) {
-		this.stats = stats;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
+	private PokemonStats stats;
+	
 
 	public void attack() {
 		System.out.println("Attack!");
@@ -34,19 +21,41 @@ public class Pokemon implements IPokemon {
 	 */
 	public static IPokemon create(String type) {
 		if(type.equals("Fire")) return new PokemonFire();
+		if(type.equals("Grass")) return new PokemonGrass();
 		else return new PokemonWater();
 	}	
 	
 	/**
-	 * Method overloading	
+	 * Method overloading: create pokemon instance with custom stats	
 	 * @param type
 	 * @param stats
-	 * @return
+	 * @return Pokemon instance with interface
 	 */
-	public static IPokemon create(String type, Stats stats) {
-		if(type.equals("Fire")) return new PokemonFire();
-		else return new PokemonWater();
+	public static IPokemon create(String type, PokemonStats stats) {
+		IPokemon pokemon;
+		if(type.equals("Fire")) pokemon = new PokemonFire();
+		if(type.equals("Grass")) pokemon = new PokemonGrass();
+		else pokemon = new PokemonWater();
+		
+		pokemon.setStats(stats);
+		
+		return pokemon;
 	}
-	
+
+	public PokemonStats getStats() {
+		return stats;
+	}
+
+	public void setStats(PokemonStats stats) {
+		this.stats = stats;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 	
 }

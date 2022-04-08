@@ -5,12 +5,13 @@ import java.util.Scanner;
 
 import pokemon.IPokemon;
 import pokemon.Pokemon;
+import utils.CLI;
 import utils.Color;
 
 public class App {
 	private AppConfig config;
 	private IPokemon pokemon;
-	
+	private IPokemon enemyPokemon;
 	
 	public App(AppConfig config) {
 		this.config = config;
@@ -39,11 +40,12 @@ public class App {
 	 * Choose pokemon for the trainer
 	 */
 	public void choosePokemon() {
+		CLI.clear();
 		System.out.println("Choose your pokemon:");
 		System.out.println("1. Grass");
 		System.out.println("2. Fire");
 		System.out.println("3. Water");
-		System.out.print(Color.ANSI_GREEN + "Your choice: " + Color.ANSI_RESET);
+		System.out.print(Color.ANSI_YELLOW + "Your choice: " + Color.ANSI_RESET);
 		
 		Scanner scanner = new Scanner(System.in);
 		int choice = scanner.nextInt();
@@ -58,13 +60,15 @@ public class App {
 	 * @return The choice number
 	 */
 	public int showAndChooseMenu() {
+		CLI.clear();
+		System.out.println("You chose:");
 		System.out.println("==================");
-		System.out.printf("\tPokemon Game\n");
+		System.out.printf("Pokemon Game\n");
 		System.out.println("==================");
 		System.out.println("1. Training");
 		System.out.println("2. Heal");
 		System.out.println("3. Exit");
-		System.out.print(Color.ANSI_GREEN + "Your choice: " + Color.ANSI_RESET);
+		System.out.print(Color.ANSI_YELLOW + "Your choice: " + Color.ANSI_RESET);
 		
 		Scanner scanner = new Scanner(System.in);
 		int choice = scanner.nextInt();

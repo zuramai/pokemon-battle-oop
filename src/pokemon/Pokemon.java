@@ -57,5 +57,13 @@ public class Pokemon implements IPokemon {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	public String getName() {
+		return type;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 }

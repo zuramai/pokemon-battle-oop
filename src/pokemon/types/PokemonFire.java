@@ -4,8 +4,9 @@ import pokemon.IPokemon;
 import pokemon.Pokemon;
 
 public class PokemonFire extends Pokemon implements IPokemon {
-	public PokemonFire() {
-		
-	}
 	
+	@Override
+	public void attack() {
+		System.out.println("Pokemon Fire Attack!");
+	}
 }

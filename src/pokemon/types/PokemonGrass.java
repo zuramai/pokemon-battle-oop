@@ -4,6 +4,9 @@ import pokemon.IPokemon;
 import pokemon.Pokemon;
 
 public class PokemonGrass extends Pokemon implements IPokemon {
-
+	@Override
+	public void attack() {
+		System.out.println("Pokemon Grass Attack!");
+	}
 }
 

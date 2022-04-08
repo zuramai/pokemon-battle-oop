@@ -1,6 +1,7 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import pokemon.IPokemon;
@@ -12,6 +13,7 @@ public class App {
 	private AppConfig config;
 	private IPokemon pokemon;
 	private IPokemon enemyPokemon;
+	private static final String[] types = {"Water", "Fire", "Grass"};
 	
 	public App(AppConfig config) {
 		this.config = config;
@@ -52,7 +54,7 @@ public class App {
 		
 		if(choice == 1) this.pokemon = Pokemon.create("Grass");
 		else if(choice == 2) this.pokemon = Pokemon.create("Fire");		
-		else if(choice == 3) this.pokemon = Pokemon.create("Water");		
+		else this.pokemon = Pokemon.create("Water");		
 	}
 	
 	/**
@@ -60,8 +62,6 @@ public class App {
 	 * @return The choice number
 	 */
 	public int showAndChooseMenu() {
-		CLI.clear();
-		System.out.println("You chose:");
 		System.out.println("==================");
 		System.out.printf("Pokemon Game\n");
 		System.out.println("==================");
@@ -77,7 +77,28 @@ public class App {
 	}
 	
 	public void training() {
-		
+		// Check if the trainer's pokemon HP is zero
+		if(this.pokemon.getStats().getHp() == 0) {
+			System.out.println(Color.ANSI_RED + "Your pokemon HP is zero. Heal it before you train.");
+			return;
+		}
+
+		// Random enemy pokemon
+		Random r = new Random();
+		int randomIndex = r.nextInt(this.types.length);
+		this.enemyPokemon = Pokemon.create(this.types[randomIndex]);
+
+		float isPlayerWin = Math.round(Math.random() + 0.3);
+
+		if(isPlayerWin == 0) {
+			System.out.println(Color.ANSI_RED+"Your Lose. Heal your pokemon before training."+Color.ANSI_RESET);
+		}else{
+			float expGained = Math.round(Math.random() * 10);
+			System.out.println(Color.ANSI_GREEN+"You WIN. Gained "+expGained+" Exp!"+Color.ANSI_RESET);
+
+			this.pokemon.getStats().addExp(expGained);
+		}
+			
 	}
 	
 	public void heal() {

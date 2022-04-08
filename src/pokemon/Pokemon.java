@@ -20,9 +20,9 @@ public class Pokemon implements IPokemon {
 	 * @return The pokemon
 	 */
 	public static IPokemon create(String type) {
-		if(type.equals("Fire")) return new PokemonFire();
-		if(type.equals("Grass")) return new PokemonGrass();
-		else return new PokemonWater();
+		if(type.equals("Fire")) return new PokemonFire((PokemonStats)null);
+		if(type.equals("Grass")) return new PokemonGrass((PokemonStats)null);
+		else return new PokemonWater((PokemonStats)null);
 	}	
 	
 	/**
@@ -33,11 +33,9 @@ public class Pokemon implements IPokemon {
 	 */
 	public static IPokemon create(String type, PokemonStats stats) {
 		IPokemon pokemon;
-		if(type.equals("Fire")) pokemon = new PokemonFire();
-		if(type.equals("Grass")) pokemon = new PokemonGrass();
-		else pokemon = new PokemonWater();
-		
-		pokemon.setStats(stats);
+		if(type.equals("Fire")) pokemon = new PokemonFire(stats);
+		if(type.equals("Grass")) pokemon = new PokemonGrass(stats);
+		else pokemon = new PokemonWater(stats);
 		
 		return pokemon;
 	}

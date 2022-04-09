@@ -91,6 +91,7 @@ public class App {
 		float isPlayerWin = Math.round(Math.random() + 0.3);
 
 		if(isPlayerWin == 0) {
+			this.pokemon.getStats().setHp(0);
 			System.out.println(Color.ANSI_RED+"Your Lose. Heal your pokemon before training."+Color.ANSI_RESET);
 		}else{
 			float expGained = Math.round(Math.random() * 10);
@@ -102,10 +103,19 @@ public class App {
 	}
 	
 	public void heal() {
-		
+		// check if the trainer's pokemon hp is less than 100
+		if(this.pokemon.getStats().getHp() < 100) {
+			this.pokemon.getStats().setHp(100);
+			System.out.println(Color.ANSI_GREEN+"Congratulations! Your pokemon is healed. Your pokemon HP is 100."+Color.ANSI_RESET);			
+		} else {
+			System.out.println("Your pokemon HP is still full.");
+		}
 	}
 	
+	/**
+	 * Exit the application
+	 */
 	public void exit() {
-		
+		System.exit(0);
 	}
 }

@@ -1,1 +1,12 @@
- 
+Features:
+- Terdiri dari beberapa class ✅ 
+- Menjelaskan hubungan antar-class ✅ 
+- Penggunaan inheritance, overloading, dan overriding ✅ 
+- Penggunaan abstract/interface  ✅ 
+- Pilih pokemon ✅ 
+- Exp gain if winning ✅ 
+- Training ✅ 
+- Random winner ✅ 
+- Harus melakukan healing jika kalah ✅ 
+- Heal ✅
+- Exit ✅  

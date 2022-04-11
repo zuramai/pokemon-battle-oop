@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import pokemon.IPokemon;
 import pokemon.Pokemon;
+import pokemon.PokemonStats;
 import utils.CLI;
 import utils.Color;
 
@@ -77,27 +78,28 @@ public class App {
 	}
 	
 	public void training() {
+		PokemonStats stats = this.pokemon.getStats();
+
 		// Check if the trainer's pokemon HP is zero
-		if(this.pokemon.getStats().getHp() == 0) {
+		if(stats.getHp() == 0) {
 			System.out.println(Color.ANSI_RED + "Your pokemon HP is zero. Heal it before you train.");
 			return;
 		}
 
-		// Random enemy pokemon
-		Random r = new Random();
-		int randomIndex = r.nextInt(this.types.length);
-		this.enemyPokemon = Pokemon.create(this.types[randomIndex]);
-
+		// Generate random enemy pokemon
+		this.randomEnemy();
+	
 		float isPlayerWin = Math.round(Math.random() + 0.3);
 
 		if(isPlayerWin == 0) {
-			this.pokemon.getStats().setHp(0);
+			stats.setHp(0);
 			System.out.println(Color.ANSI_RED+"Your Lose. Heal your pokemon before training."+Color.ANSI_RESET);
 		}else{
 			float expGained = Math.round(Math.random() * 10);
-			System.out.println(Color.ANSI_GREEN+"You WIN. Gained "+expGained+" Exp!"+Color.ANSI_RESET);
-
-			this.pokemon.getStats().addExp(expGained);
+			
+			stats.addExp(expGained);
+			System.out.println(Color.ANSI_GREEN+"You WIN. Gained "+expGained+" Exp! Your Exp is: "+stats.getExp()+Color.ANSI_RESET);
+			stats.checkExp(this.config.getExpThresold());
 		}
 			
 	}
@@ -117,5 +119,11 @@ public class App {
 	 */
 	public void exit() {
 		System.exit(0);
+	}
+
+	private void randomEnemy() {
+		Random r = new Random();
+		int randomIndex = r.nextInt(this.types.length);
+		this.enemyPokemon = Pokemon.create(this.types[randomIndex]);
 	}
 }

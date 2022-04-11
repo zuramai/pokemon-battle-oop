@@ -9,4 +9,8 @@ public class AppConfig {
 		this.maxPokemonObtained = maxPokemonObtained;
 		this.expThresold = expThresold;
 	}
+
+	public Integer[] getExpThresold() {
+		return this.expThresold;
+	}
 }

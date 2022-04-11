@@ -1,11 +1,16 @@
 package pokemon;
 
+import utils.Color;
+
 public class PokemonStats {
+	private int level;
 	private int hp;
 	private int exp;
 	private int attack;
 	private int def;
 	private int agility;
+
+	private final int MAX_LEVEL = 10;
 	
 	public PokemonStats(int hp, int exp, int attack, int def, int agility) {
 		this.hp = hp;
@@ -13,6 +18,13 @@ public class PokemonStats {
 		this.attack = attack;
 		this.def = def;
 		this.agility = agility;
+	}
+
+	public void checkExp(Integer[] thresolds) {
+		if(this.exp > thresolds[this.level]) {
+			this.level = this.level < MAX_LEVEL ? this.level+1 : this.level;
+			System.out.println(Color.ANSI_CYAN + "Level Up! Your level now: "+this.level+Color.ANSI_RESET);
+		}
 	}
 	
 	public int getHp() {
